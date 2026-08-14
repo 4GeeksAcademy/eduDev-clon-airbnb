@@ -11,8 +11,8 @@ The application lets a visitor browse featured stays, narrow them by text and ca
 | Route | Purpose | Primary interaction |
 |---|---|---|
 | `/` | Discover accommodations from a search-focused home page. | Live text search and category filtering. |
-| `/catalog` | Review the complete accommodation inventory. | Sort results by ascending or descending nightly price. |
-| `/rooms/[id]` | Inspect one room before booking. | Browse photos and adjust the guest count. |
+| `/catalog` | Review the complete accommodation inventory. | Sort results and inspect all stays on an interactive map. |
+| `/rooms/[id]` | Inspect one room before booking. | Select dates and guests and review the calculated total. |
 
 ## Shared component model
 
@@ -47,7 +47,7 @@ The application lets a visitor browse featured stays, narrow them by text and ca
 | `SortControl` | `direction`, `onChange` | Shares the catalog heading row with the result count and controls price ordering. |
 | `AccommodationGrid` | `accommodations` | Reuses the same `AccommodationCard` as Home. It occupies the main results column. |
 | `AccommodationCard` | `accommodation` | Compact result representation on mobile and repeated cards in the desktop results region. |
-| `MapPlaceholder` | no props | Gray map-shaped companion panel below results on mobile and to their right on desktop. |
+| `InteractiveMap` | `accommodations` | OpenStreetMap companion below results on mobile and to their right on desktop, with a marker and detail link per stay. |
 
 ### Room detail reference
 
@@ -60,7 +60,7 @@ The application lets a visitor browse featured stays, narrow them by text and ca
 | `RoomHeader` | `title`, `rating`, `reviews`, `location` | Immediately follows the gallery and establishes room identity. |
 | `HostInfo` | `host` | Profile summary below the room header with avatar, name, and hosting tenure. |
 | `AmenitiesGrid` | `amenities` | Two-column icon-and-label list in the main detail column. |
-| `BookingCard` | `pricePerNight` | Companion panel containing `GuestCounter` and the reservation call to action; stacks on mobile and sits beside details on desktop. |
+| `BookingCard` | `pricePerNight` | Companion panel containing the date range, nightly-price total, `GuestCounter`, and reservation call to action. |
 | `GuestCounter` | `guests`, `onDecrease`, `onIncrease`, `min`, `max` | Inline counter inside the booking card with explicit limits. |
 | `LoadingState` | `message?` | Replaces room content while the route id is resolved through simulated loading. |
 
@@ -75,4 +75,4 @@ The Search-Focused direction was selected because it gives search and categories
 
 ## Scope boundaries
 
-The project uses only Next.js 16, TypeScript, Tailwind CSS, ESLint, App Router, and local typed mock data. It intentionally excludes a backend, authentication, a database, real maps, date pickers, global state, and third-party component or icon libraries.
+The project remains frontend-only with local typed mock data. Its optional scope includes React Leaflet with public OpenStreetMap tiles and React DayPicker for local date-range totals; it still excludes a backend, authentication, a database, private APIs, and global state.

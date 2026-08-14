@@ -14,9 +14,11 @@ An academic, responsive recreation of Airbnb's core accommodation browsing exper
 
 - `/` — browse stays with live text search and category filtering.
 - `/catalog` — view all stays and sort them by nightly price.
-- `/rooms/[id]` — inspect room photos, host information, amenities, and guest controls.
+- `/catalog` includes an interactive OpenStreetMap with one marker per stay.
+- `/rooms/[id]` — inspect room details and select booking dates, guests, and a nightly-price total.
 - Responsive, reusable components backed by local typed mock data.
 - Stock photos are stored locally for demonstration.
+- Date ranges disable past dates and calculate the booking total by number of nights.
 
 ## Installation and development
 

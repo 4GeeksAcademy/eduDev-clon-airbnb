@@ -8,4 +8,5 @@ export interface Accommodation {
   pricePerNight: number;
   rating: number;
   image: string;
+  coordinates: [number, number];
 }
